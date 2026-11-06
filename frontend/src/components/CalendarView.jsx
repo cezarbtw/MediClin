@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { exportarConsultasCsv } from '../utils/csvExport';
 
 const DIAS_SEMANA = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 const DIAS_SEMANA_COMPLETO = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
@@ -448,6 +449,16 @@ export function CalendarView({
               Semana
             </button>
           </div>
+
+          <button
+            type="button"
+            className="btn btn-outline btn-sm"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+            onClick={() => exportarConsultasCsv(consultasFiltradas)}
+            title="Exportar consultas filtradas para arquivo CSV"
+          >
+            <span>📥</span> Exportar CSV
+          </button>
 
           <button
             type="button"

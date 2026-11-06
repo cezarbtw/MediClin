@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
     Page<Paciente> findAllByAtivoTrue(Pageable paginacao);
 
+    long countByAtivoTrue();
+
     @Query("""
             select p.ativo
             from Paciente p

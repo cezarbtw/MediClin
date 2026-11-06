@@ -4,6 +4,7 @@ import { ConfirmDialog } from '../components/ConfirmDialog';
 import { ProntuarioModal } from '../components/ProntuarioModal';
 import { DocumentoModal } from '../components/DocumentoModal';
 import { CalendarView } from '../components/CalendarView';
+import { exportarConsultasCsv } from '../utils/csvExport';
 
 const initials = (name = '') =>
   name.split(' ').slice(0, 2).map((w) => w[0]).join('').toUpperCase() || '?';
@@ -355,9 +356,20 @@ export function ConsultasPage({ showToast }) {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <button className="btn btn-primary" onClick={() => openNew()}>
-              + Agendar Consulta
-            </button>
+            <div style={{ display: 'flex', gap: 10 }}>
+              <button
+                type="button"
+                className="btn btn-outline"
+                onClick={() => exportarConsultasCsv(filtered)}
+                title="Exportar listagem de consultas para arquivo CSV"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+              >
+                <span>📥</span> Exportar Relatório
+              </button>
+              <button className="btn btn-primary" onClick={() => openNew()}>
+                + Agendar Consulta
+              </button>
+            </div>
           </div>
 
           {loading ? (

@@ -21,7 +21,7 @@ Este documento contém o detalhamento passo a passo de todas as issues do projet
 | **#11** | Documentos / PDF | Geração e Emissão de Receituário e Atestado Médico em PDF | ✅ Concluída |
 | **#12** | Frontend / UX | Visão de Agenda em Calendário Interativo Semanal/Mensal | ✅ Concluída |
 | **#13** | Notificações | Disparo Automático de E-mails de Confirmação e Cancelamento | ✅ Concluída |
-| **#14** | Analytics | Métricas Avançadas, Gráficos no Dashboard e Exportação CSV | ⏳ Pendente |
+| **#14** | Analytics | Métricas Avançadas, Gráficos no Dashboard e Exportação CSV | ✅ Concluída |
 | **#15** | Compliance / DB | Auditoria de Operações e Rastreabilidade de Modificações (LGPD) | ⏳ Pendente |
 
 ---
@@ -210,7 +210,7 @@ Notificar pacientes e médicos por e-mail automaticamente sempre que uma consult
 
 - **Tipo:** `enhancement`, `fullstack`, `analytics`
 - **Prioridade:** Média
-- **Status:** ⏳ Pendente
+- **Status:** ✅ Concluída
 
 ### Descrição
 Expandir o painel administrativo da clínica com métricas analíticas detalhadas, gráficos visuais de desempenho operacional e funcionalidade de exportação de dados em CSV para relatórios da diretoria.

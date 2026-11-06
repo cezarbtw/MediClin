@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { api, MOCK } from '../services/api';
 import { ConfirmDialog } from '../components/ConfirmDialog';
+import { exportarMedicosCsv } from '../utils/csvExport';
 
 const initials = (name = '') =>
   name.split(' ').slice(0, 2).map((w) => w[0]).join('').toUpperCase() || '?';
@@ -306,9 +307,20 @@ export function MedicosPage({ showToast }) {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <button className="btn btn-primary" onClick={openNew}>
-            + Novo Médico
-          </button>
+          <div style={{ display: 'flex', gap: 10 }}>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={() => exportarMedicosCsv(filtered)}
+              title="Exportar listagem filtrada para arquivo CSV"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+            >
+              <span>📥</span> Exportar CSV
+            </button>
+            <button className="btn btn-primary" onClick={openNew}>
+              + Novo Médico
+            </button>
+          </div>
         </div>
 
         {loading ? (
