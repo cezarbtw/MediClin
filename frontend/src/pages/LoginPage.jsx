@@ -120,12 +120,11 @@ export function LoginPage() {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <div className="login-logo">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 12h6m-3-3v6M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3z" />
-            </svg>
-          </div>
-          <h1>MediClin</h1>
+          <img
+            src="/mediclin-logo.png"
+            alt="MediClin · Gestão Clínica"
+            className="login-brand-logo"
+          />
           <p>
             {mode === 'login' && 'Gestão Clínica & Hospitalar · Acesse sua conta'}
             {mode === 'cadastro' && 'Crie sua conta com controle de perfil de acesso'}

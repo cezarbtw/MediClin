@@ -226,14 +226,13 @@ export function DocumentoModal({ consulta, paciente, medico, prontuario, onClose
                 {/* Cabeçalho da Folha Timbrada */}
                 <div className="doc-header">
                   <div className="doc-header-brand">
-                    <div className="doc-logo-box">
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 2v20M2 12h20" />
-                      </svg>
-                    </div>
+                    <img
+                      src="/mediclin-logo-horizontal.png"
+                      alt="MediClin · Gestão Clínica"
+                      className="doc-brand-logo"
+                    />
                     <div>
-                      <h1 className="doc-clinic-name">MediClin</h1>
-                      <span className="doc-clinic-sub">Rede Hospitalar & Gestão Clínica Integrada</span>
+                      <span className="doc-clinic-sub">Rede Hospitalar Integrada</span>
                     </div>
                   </div>
                   <div className="doc-header-info">

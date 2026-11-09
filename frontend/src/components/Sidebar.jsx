@@ -63,15 +63,11 @@ export function Sidebar({ currentPage, onNavigate }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <div className="sidebar-logo-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2v20M2 12h20" />
-          </svg>
-        </div>
-        <div className="sidebar-logo-text">
-          <h1>MediClin</h1>
-          <span>Gestão Clínica</span>
-        </div>
+        <img
+          src="/mediclin-logo-horizontal.png"
+          alt="MediClin · Gestão Clínica"
+          className="sidebar-brand-logo"
+        />
       </div>
 
       <nav className="sidebar-nav">
