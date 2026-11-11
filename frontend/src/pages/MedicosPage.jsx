@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { api, MOCK } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 import { ConfirmDialog } from '../components/ConfirmDialog';
+import { AuditBadge, AuditDetailBox } from '../components/AuditInfo';
 import { exportarMedicosCsv } from '../utils/csvExport';
 
 const initials = (name = '') =>
@@ -14,6 +16,7 @@ const ESPECIALIDADES = [
 ];
 
 export function MedicosPage({ showToast }) {
+  const { isAdmin } = useAuth();
   const [medicos, setMedicos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -278,6 +281,7 @@ export function MedicosPage({ showToast }) {
                   </div>
                 </div>
               </div>
+              {isAdmin && modal === 'edit' && <AuditDetailBox auditoria={form.auditoria} />}
             </div>
 
             <div className="modal-footer">
@@ -341,6 +345,7 @@ export function MedicosPage({ showToast }) {
                 <th>Especialidade</th>
                 <th>Contato</th>
                 <th>Status</th>
+                {isAdmin && <th>Auditoria (LGPD)</th>}
                 <th>Ações</th>
               </tr>
             </thead>
@@ -371,6 +376,11 @@ export function MedicosPage({ showToast }) {
                       {m.ativo !== false ? 'Ativo' : 'Inativo'}
                     </span>
                   </td>
+                  {isAdmin && (
+                    <td>
+                      <AuditBadge auditoria={m.auditoria} />
+                    </td>
+                  )}
                   <td>
                     <div className="tag-actions">
                       <button className="btn btn-outline btn-sm" onClick={() => openEdit(m)}>

@@ -67,6 +67,7 @@ public class AgendaDeConsultas {
 
         var consulta = consultaRepository.getReferenceById(dados.idConsulta());
         consulta.cancelar(dados.motivo());
+        consultaRepository.saveAndFlush(consulta);
 
         emailService.enviarEmailCancelamento(consulta);
     }

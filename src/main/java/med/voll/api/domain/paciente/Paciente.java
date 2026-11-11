@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.domain.auditoria.EntidadeAuditavel;
 import med.voll.api.domain.endereco.Endereco;
 
 @Table(name = "pacientes")
@@ -13,7 +14,7 @@ import med.voll.api.domain.endereco.Endereco;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Paciente {
+public class Paciente extends EntidadeAuditavel {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

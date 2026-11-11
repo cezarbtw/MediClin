@@ -144,6 +144,7 @@ export function AuthProvider({ children }) {
         token,
         user,
         isAuthenticated: !!token,
+        isAdmin: user?.perfil === 'ADMIN',
         loading,
         login,
         cadastrar,

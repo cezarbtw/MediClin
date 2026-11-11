@@ -26,6 +26,7 @@ public class MedicoService {
     public DadosDetalhamentoMedico atualizar(DadosAtualizacaoMedico dados) {
         var medico = repository.getReferenceById(dados.id());
         medico.atualizarInformacoes(dados);
+        repository.saveAndFlush(medico);
         return new DadosDetalhamentoMedico(medico);
     }
 
@@ -34,6 +35,7 @@ public class MedicoService {
         var dadosComId = new DadosAtualizacaoMedico(id, dados.nome(), dados.telefone(), dados.endereco());
         var medico = repository.getReferenceById(id);
         medico.atualizarInformacoes(dadosComId);
+        repository.saveAndFlush(medico);
         return new DadosDetalhamentoMedico(medico);
     }
 
@@ -41,6 +43,7 @@ public class MedicoService {
     public void excluir(Long id) {
         var medico = repository.getReferenceById(id);
         medico.excluir();
+        repository.saveAndFlush(medico);
     }
 
     public DadosDetalhamentoMedico detalhar(Long id) {

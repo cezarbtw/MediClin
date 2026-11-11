@@ -9,9 +9,10 @@ import { LobbyPage } from './pages/LobbyPage';
 import { MedicosPage } from './pages/MedicosPage';
 import { PacientesPage } from './pages/PacientesPage';
 import { ConsultasPage } from './pages/ConsultasPage';
+import { AuditoriaPage } from './pages/AuditoriaPage';
 
 export function App() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isAdmin } = useAuth();
   const [currentPage, setCurrentPage] = useState('lobby');
   const [toast, setToast] = useState(null);
 
@@ -30,6 +31,7 @@ export function App() {
     medicos: 'Gerenciamento de Médicos',
     pacientes: 'Gerenciamento de Pacientes',
     consultas: 'Agendamento e Gestão de Consultas',
+    auditoria: 'Auditoria & Rastreabilidade (LGPD)',
   };
 
   return (
@@ -45,6 +47,7 @@ export function App() {
           {currentPage === 'medicos' && <MedicosPage showToast={showToast} />}
           {currentPage === 'pacientes' && <PacientesPage showToast={showToast} />}
           {currentPage === 'consultas' && <ConsultasPage showToast={showToast} />}
+          {currentPage === 'auditoria' && isAdmin && <AuditoriaPage showToast={showToast} />}
         </main>
       </div>
 

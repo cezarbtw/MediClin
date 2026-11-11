@@ -1,8 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import { api } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 import { DocumentoModal } from './DocumentoModal';
+import { AuditBadge } from './AuditInfo';
 
 export function ProntuarioModal({ paciente, consulta, medicos = [], onClose, showToast }) {
+  const { isAdmin } = useAuth();
   const [activeTab, setActiveTab] = useState('timeline'); // 'timeline' | 'novo'
   const [prontuarios, setProntuarios] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -257,7 +260,8 @@ export function ProntuarioModal({ paciente, consulta, medicos = [], onClose, sho
                           </div>
                         )}
 
-                        <div style={{ marginTop: 12, paddingTop: 10, borderTop: '1px dashed var(--border)', display: 'flex', justifyContent: 'flex-end' }}>
+                        <div style={{ marginTop: 12, paddingTop: 10, borderTop: '1px dashed var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
+                          {isAdmin ? <AuditBadge auditoria={item.auditoria} inline /> : <span />}
                           <button
                             type="button"
                             className="btn btn-outline btn-sm"

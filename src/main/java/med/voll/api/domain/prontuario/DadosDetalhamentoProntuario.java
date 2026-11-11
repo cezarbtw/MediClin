@@ -1,5 +1,7 @@
 package med.voll.api.domain.prontuario;
 
+import med.voll.api.domain.auditoria.DadosAuditoria;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -19,8 +21,34 @@ public record DadosDetalhamentoProntuario(
         String observacoes,
         BigDecimal peso,
         Integer altura,
-        String pressaoArterial
+        String pressaoArterial,
+        DadosAuditoria auditoria
 ) {
+    public DadosDetalhamentoProntuario(
+            Long id,
+            Long idPaciente,
+            String nomePaciente,
+            Long idMedico,
+            String nomeMedico,
+            String crmMedico,
+            String especialidadeMedico,
+            Long idConsulta,
+            LocalDateTime dataRegistro,
+            String queixaPrincipal,
+            String diagnostico,
+            String prescricao,
+            String observacoes,
+            BigDecimal peso,
+            Integer altura,
+            String pressaoArterial
+    ) {
+        this(
+                id, idPaciente, nomePaciente, idMedico, nomeMedico, crmMedico, especialidadeMedico,
+                idConsulta, dataRegistro, queixaPrincipal, diagnostico, prescricao, observacoes,
+                peso, altura, pressaoArterial, null
+        );
+    }
+
     public DadosDetalhamentoProntuario(Prontuario prontuario) {
         this(
                 prontuario.getId(),
@@ -38,7 +66,8 @@ public record DadosDetalhamentoProntuario(
                 prontuario.getObservacoes(),
                 prontuario.getPeso(),
                 prontuario.getAltura(),
-                prontuario.getPressaoArterial()
+                prontuario.getPressaoArterial(),
+                DadosAuditoria.de(prontuario)
         );
     }
 }

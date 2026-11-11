@@ -1,13 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
 import { api, MOCK } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { ProntuarioModal } from '../components/ProntuarioModal';
+import { AuditBadge, AuditDetailBox } from '../components/AuditInfo';
 import { exportarPacientesCsv } from '../utils/csvExport';
 
 const initials = (name = '') =>
   name.split(' ').slice(0, 2).map((w) => w[0]).join('').toUpperCase() || '?';
 
 export function PacientesPage({ showToast }) {
+  const { isAdmin } = useAuth();
   const [pacientes, setPacientes] = useState([]);
   const [medicos, setMedicos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -315,6 +318,7 @@ export function PacientesPage({ showToast }) {
                   </div>
                 </div>
               </div>
+              {isAdmin && modal === 'edit' && <AuditDetailBox auditoria={form.auditoria} />}
             </div>
 
             <div className="modal-footer">
@@ -377,6 +381,7 @@ export function PacientesPage({ showToast }) {
                 <th>CPF</th>
                 <th>Contato & Saúde</th>
                 <th>Status</th>
+                {isAdmin && <th>Auditoria (LGPD)</th>}
                 <th>Ações</th>
               </tr>
             </thead>
@@ -414,6 +419,11 @@ export function PacientesPage({ showToast }) {
                   <td>
                     <span className="badge badge-green">Ativo</span>
                   </td>
+                  {isAdmin && (
+                    <td>
+                      <AuditBadge auditoria={p.auditoria} />
+                    </td>
+                  )}
                   <td>
                     <div className="tag-actions">
                       <button

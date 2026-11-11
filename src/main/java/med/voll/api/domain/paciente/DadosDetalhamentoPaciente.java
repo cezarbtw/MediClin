@@ -1,5 +1,6 @@
 package med.voll.api.domain.paciente;
 
+import med.voll.api.domain.auditoria.DadosAuditoria;
 import med.voll.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoPaciente(
@@ -10,10 +11,24 @@ public record DadosDetalhamentoPaciente(
         String telefone,
         Endereco endereco,
         String tipoSanguineo,
-        String alergias
+        String alergias,
+        DadosAuditoria auditoria
 ) {
     public DadosDetalhamentoPaciente(Long id, String nome, String email, String cpf, String telefone, Endereco endereco) {
-        this(id, nome, email, cpf, telefone, endereco, null, null);
+        this(id, nome, email, cpf, telefone, endereco, null, null, null);
+    }
+
+    public DadosDetalhamentoPaciente(
+            Long id,
+            String nome,
+            String email,
+            String cpf,
+            String telefone,
+            Endereco endereco,
+            String tipoSanguineo,
+            String alergias
+    ) {
+        this(id, nome, email, cpf, telefone, endereco, tipoSanguineo, alergias, null);
     }
 
     public DadosDetalhamentoPaciente(Paciente paciente) {
@@ -25,7 +40,8 @@ public record DadosDetalhamentoPaciente(
                 paciente.getTelefone(),
                 paciente.getEndereco(),
                 paciente.getTipoSanguineo(),
-                paciente.getAlergias()
+                paciente.getAlergias(),
+                DadosAuditoria.de(paciente)
         );
     }
 }

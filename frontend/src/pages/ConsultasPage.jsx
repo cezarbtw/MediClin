@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import { api, MOCK } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { ProntuarioModal } from '../components/ProntuarioModal';
 import { DocumentoModal } from '../components/DocumentoModal';
 import { CalendarView } from '../components/CalendarView';
+import { AuditBadge } from '../components/AuditInfo';
 import { exportarConsultasCsv } from '../utils/csvExport';
 
 const initials = (name = '') =>
@@ -23,6 +25,7 @@ const ESPECIALIDADES = [
 ];
 
 export function ConsultasPage({ showToast }) {
+  const { isAdmin } = useAuth();
   const [consultas, setConsultas] = useState([]);
   const [medicos, setMedicos] = useState([]);
   const [pacientes, setPacientes] = useState([]);
@@ -125,6 +128,7 @@ export function ConsultasPage({ showToast }) {
         pacienteNome: pac?.nome || res.pacienteNome || 'Paciente',
         data: res.data || payload.data,
         status: 'AGENDADA',
+        auditoria: res.auditoria || null,
       };
 
       setConsultas((prev) => [consultaFormatada, ...prev]);
@@ -389,6 +393,7 @@ export function ConsultasPage({ showToast }) {
                   <th>Médico</th>
                   <th>Data / Hora</th>
                   <th>Status</th>
+                  {isAdmin && <th>Auditoria (LGPD)</th>}
                   <th>Ações</th>
                 </tr>
               </thead>
@@ -434,6 +439,11 @@ export function ConsultasPage({ showToast }) {
                           {status}
                         </span>
                       </td>
+                      {isAdmin && (
+                        <td>
+                          <AuditBadge auditoria={c.auditoria} />
+                        </td>
+                      )}
                       <td>
                         <div className="tag-actions">
                           {!isCancelada && (
