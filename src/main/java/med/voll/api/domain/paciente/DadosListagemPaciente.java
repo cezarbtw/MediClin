@@ -9,14 +9,14 @@ public record DadosListagemPaciente(
         String cpf,
         String telefone,
         String tipoSanguineo,
-        DadosAuditoria auditoria
-) {
+        DadosAuditoria auditoria) {
 
     public DadosListagemPaciente(Long id, String nome, String email, String cpf) {
         this(id, nome, email, cpf, null, null, null);
     }
 
-    public DadosListagemPaciente(Long id, String nome, String email, String cpf, String telefone, String tipoSanguineo) {
+    public DadosListagemPaciente(Long id, String nome, String email, String cpf, String telefone,
+            String tipoSanguineo) {
         this(id, nome, email, cpf, telefone, tipoSanguineo, null);
     }
 
@@ -28,8 +28,7 @@ public record DadosListagemPaciente(
                 paciente.getCpf(),
                 paciente.getTelefone(),
                 paciente.getTipoSanguineo(),
-                DadosAuditoria.de(paciente)
-        );
+                DadosAuditoria.de(paciente));
     }
 
 }

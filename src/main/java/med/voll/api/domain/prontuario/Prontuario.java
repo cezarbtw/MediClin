@@ -70,4 +70,3 @@ public class Prontuario extends EntidadeAuditavel {
         this.pressaoArterial = dados.pressaoArterial();
     }
 }
-
