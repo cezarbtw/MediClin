@@ -342,19 +342,29 @@ Para rodar os testes localmente:
 
 ---
 
-## 🚀 Histórico de Entregas & Backlog
+## 🚀 Histórico de Entregas & Issues (GitHub)
 
-O backlog estruturado nas issues do repositório foi **100% implementado, testado e entregue na branch principal**:
+Status do repositório: **15 issues fechadas (`closed`) · 0 issues abertas (`open`)** — todo o backlog planejado foi **100% implementado, testado e entregue** na branch `master`:
 
-- [x] **[Issue #7] CI/CD com GitHub Actions**: Workflow automatizado validando compilação do Backend (JDK 17) e Frontend (Node 20), com badge de status no README.
-- [x] **[Issue #8] Cobertura de Testes Unitários**: Testes unitários para validadores de agendamento, cancelamento e serviço de tokens JWT.
-- [x] **[Issue #10] Prontuário Eletrônico do Paciente (PEP)**: Linha do tempo clínica, sinais vitais com cálculo de IMC, anamnese, diagnóstico e prescrições.
-- [x] **[Issue #11] Emissão de Documentos Clínicos**: Visualização e impressão em folha timbrada hospitalar A4 para atestados e receituários médicos em PDF.
-- [x] **[Issue #12] Grade Interativa de Agenda (Calendário)**: Calendário interativo mensal e semanal para acompanhamento dinâmico de consultas.
-- [x] **[Issue #13] Notificações Transacionais por E-mail**: Disparo assíncrono de confirmações e cancelamentos de consulta com layout HTML e integração com Mailpit.
-- [x] **[Issue #14] Métricas Analíticas & Exportação CSV**: Painel analítico de indicadores, taxa de cancelamento, gráficos visuais de especialidades e dias de pico, além de exportação de relatórios CSV sanitizados.
-- [x] **[Issue #15] Auditoria de Operações & Rastreabilidade LGPD/CFM**: Superclasse auditável JPA, `AuditorAware`, migração `V10` e painel administrativo exclusivo para perfil `ADMIN`.
-- [x] **Identidade Visual MediClin**: Substituição dos placeholders pela marca oficial MediClin, layouts responsivos e favicon M+ em vetor SVG.
+### Base Arquitetural, Segurança & DevOps (Issues #1 a #9)
+- [x] **[#1 — Frontend React + Vite & Autenticação JWT](https://github.com/cezarbtw/Projeto-Medicos/issues/1)**: Estruturação da SPA em React com Vite e fluxo de autenticação via Token JWT.
+- [x] **[#2 — CORS & Spring Security 6](https://github.com/cezarbtw/Projeto-Medicos/issues/2)**: Configuração de política de CORS e modernização de `SecurityConfigurations` para Spring Security 6.
+- [x] **[#3 — Endpoint `GET /consultas`](https://github.com/cezarbtw/Projeto-Medicos/issues/3)**: Listagem de consultas com filtros e paginação.
+- [x] **[#4 — Harmonização de DTOs e Formulários](https://github.com/cezarbtw/Projeto-Medicos/issues/4)**: Alinhamento entre backend e frontend nos fluxos de endereço, agendamento e edição.
+- [x] **[#5 — Camada de Service para Médicos e Pacientes](https://github.com/cezarbtw/Projeto-Medicos/issues/5)**: Separação de responsabilidades com `MedicoService` e `PacienteService`.
+- [x] **[#6 — Dockerização Multi-Stage & Compose](https://github.com/cezarbtw/Projeto-Medicos/issues/6)**: Criação de `Dockerfile` multi-stage e `docker-compose.yml` integrando API e MySQL 8.
+- [x] **[#7 — CI/CD com GitHub Actions](https://github.com/cezarbtw/Projeto-Medicos/issues/7)**: Workflow automatizado validando build/testes do Backend (JDK 17) e build do Frontend (Node 20).
+- [x] **[#8 — Cobertura de Testes Unitários](https://github.com/cezarbtw/Projeto-Medicos/issues/8)**: Testes unitários para validadores de agendamento, cancelamento e `TokenService`.
+- [x] **[#9 — Controle de Perfis (RBAC) & Recuperação de Senha](https://github.com/cezarbtw/Projeto-Medicos/issues/9)**: Perfis `ADMIN`, `MEDICO` e `RECEPCIONISTA` e fluxo de recuperação/redefinição de senha com token temporário.
+
+### Evolução Clínica, Comunicação, Analytics & LGPD (Issues #10 a #15)
+- [x] **[#10 — Prontuário Eletrônico do Paciente (PEP)](https://github.com/cezarbtw/Projeto-Medicos/issues/10)**: Linha do tempo clínica, sinais vitais com cálculo de IMC, anamnese, diagnóstico e prescrições.
+- [x] **[#11 — Emissão de Documentos Clínicos em PDF](https://github.com/cezarbtw/Projeto-Medicos/issues/11)**: Visualização e impressão em folha timbrada hospitalar A4 para atestados e receituários médicos.
+- [x] **[#12 — Agenda em Calendário Interativo](https://github.com/cezarbtw/Projeto-Medicos/issues/12)**: Calendário interativo semanal e mensal para acompanhamento dinâmico de consultas.
+- [x] **[#13 — Notificações Transacionais por E-mail](https://github.com/cezarbtw/Projeto-Medicos/issues/13)**: Disparo assíncrono de confirmações e cancelamentos de consulta em HTML com integração ao Mailpit.
+- [x] **[#14 — Métricas Analíticas & Exportação CSV](https://github.com/cezarbtw/Projeto-Medicos/issues/14)**: Painel analítico de indicadores, gráficos visuais de especialidades/dias de pico e exportação CSV sanitizada.
+- [x] **[#15 — Auditoria de Operações & Rastreabilidade (LGPD/CFM)](https://github.com/cezarbtw/Projeto-Medicos/issues/15)**: Superclasse auditável JPA, `AuditorAware`, migração `V10` e painel administrativo exclusivo para perfil `ADMIN`.
+- [x] **Identidade Visual MediClin**: Aplicação do logo oficial da rede e favicon exclusivo **M+** em vetor SVG/PNG/ICO.
 
 ---
 
